@@ -25,7 +25,6 @@ public class PedidoService {
     @Autowired
     private final ModelMapper modelMapper;
 
-
     public List<PedidoDto> obterTodos() {
         return repository.findAll().stream()
                 .map(p -> modelMapper.map(p, PedidoDto.class))
@@ -51,7 +50,6 @@ public class PedidoService {
     }
 
     public PedidoDto atualizaStatus(Long id, StatusDto dto) {
-
         Pedido pedido = repository.porIdComItens(id);
 
         if (pedido == null) {
@@ -60,11 +58,11 @@ public class PedidoService {
 
         pedido.setStatus(dto.getStatus());
         repository.atualizaStatus(dto.getStatus(), pedido);
+
         return modelMapper.map(pedido, PedidoDto.class);
     }
 
     public void aprovaPagamentoPedido(Long id) {
-
         Pedido pedido = repository.porIdComItens(id);
 
         if (pedido == null) {

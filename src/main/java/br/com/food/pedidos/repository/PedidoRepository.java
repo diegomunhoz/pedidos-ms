@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
+
     @Transactional
     @Modifying(clearAutomatically = true)
     @Query("update Pedido p set p.status = :status where p = :pedido")
