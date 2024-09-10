@@ -1,4 +1,4 @@
-package br.com.food.pedidos.config;
+package br.com.alurafood.pedidos.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

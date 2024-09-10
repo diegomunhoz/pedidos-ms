@@ -1,10 +1,10 @@
-package br.com.food.pedidos.service;
+package br.com.alurafood.pedidos.service;
 
-import br.com.food.pedidos.dto.PedidoDto;
-import br.com.food.pedidos.dto.StatusDto;
-import br.com.food.pedidos.model.Pedido;
-import br.com.food.pedidos.model.Status;
-import br.com.food.pedidos.repository.PedidoRepository;
+import br.com.alurafood.pedidos.dto.PedidoDto;
+import br.com.alurafood.pedidos.dto.StatusDto;
+import br.com.alurafood.pedidos.model.Pedido;
+import br.com.alurafood.pedidos.model.Status;
+import br.com.alurafood.pedidos.repository.PedidoRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +24,7 @@ public class PedidoService {
 
     @Autowired
     private final ModelMapper modelMapper;
+
 
     public List<PedidoDto> obterTodos() {
         return repository.findAll().stream()
@@ -50,6 +51,7 @@ public class PedidoService {
     }
 
     public PedidoDto atualizaStatus(Long id, StatusDto dto) {
+
         Pedido pedido = repository.porIdComItens(id);
 
         if (pedido == null) {
@@ -58,11 +60,11 @@ public class PedidoService {
 
         pedido.setStatus(dto.getStatus());
         repository.atualizaStatus(dto.getStatus(), pedido);
-
         return modelMapper.map(pedido, PedidoDto.class);
     }
 
     public void aprovaPagamentoPedido(Long id) {
+
         Pedido pedido = repository.porIdComItens(id);
 
         if (pedido == null) {

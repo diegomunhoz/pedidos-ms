@@ -1,6 +1,9 @@
-package br.com.food.pedidos.model;
+package br.com.alurafood.pedidos.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -8,11 +11,13 @@ import javax.validation.constraints.Positive;
 
 @Entity
 @Table(name = "item_do_pedido")
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ItemDoPedido {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
@@ -21,7 +26,7 @@ public class ItemDoPedido {
 
     private String descricao;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional=false)
     private Pedido pedido;
 
 }

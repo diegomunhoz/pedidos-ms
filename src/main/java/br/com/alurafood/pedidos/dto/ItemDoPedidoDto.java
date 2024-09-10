@@ -1,12 +1,14 @@
-package br.com.food.pedidos.dto;
+package br.com.alurafood.pedidos.dto;
 
 import lombok.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ItemDoPedidoDto {
 
     private Long id;
     private Integer quantidade;
     private String descricao;
-
 }

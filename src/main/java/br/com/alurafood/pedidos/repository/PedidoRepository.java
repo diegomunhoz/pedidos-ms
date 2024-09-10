@@ -1,14 +1,13 @@
-package br.com.food.pedidos.repository;
+package br.com.alurafood.pedidos.repository;
 
-import br.com.food.pedidos.model.Pedido;
-import br.com.food.pedidos.model.Status;
+import br.com.alurafood.pedidos.model.Pedido;
+import br.com.alurafood.pedidos.model.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
-
     @Transactional
     @Modifying(clearAutomatically = true)
     @Query("update Pedido p set p.status = :status where p = :pedido")
